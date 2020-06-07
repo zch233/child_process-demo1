@@ -1,8 +1,10 @@
 const child_process = require('child_process')
 
-const { exec } = child_process
+const { execFile } = child_process
 
-exec('ls', (error, stdout, stderr) => {
+const userInput = '-al && pwd' // '-al && rm -fm *'
+const options = { pwd: 'C:\\', env: { NODE_ENV: 'development' } }
+execFile('ls', ['-al', userInput], options, (error, stdout, stderr) => {
   console.log(error)
   console.log(stdout)
   console.log(stderr)
